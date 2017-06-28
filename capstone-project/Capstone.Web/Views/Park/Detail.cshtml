@@ -1,4 +1,5 @@
 ﻿@using Capstone.Web.Models;
+@using Capstone.Web.Controllers;
 @using System.Globalization;
 @model ParkWeatherViewModel
 
@@ -97,8 +98,8 @@
             </table>
         </div>
         <div class="col-lg-8">
-            <p class="quote">@Model.Park.InspirationalQuote</p>
-            <p class="source">@Model.Park.InspirationalQuoteSource</p>
+            <p class="quote">"@Model.Park.InspirationalQuote"</p>
+            <p class="source">—@Model.Park.InspirationalQuoteSource</p>
         </div>
     </div>
 
@@ -107,16 +108,34 @@
             <h3>Today</h3>
             <img class="img-responsive" src="@Url.Content("~/Content/weather/" + Model.Forecast[0].ImageName + ".png")" />
             <p>@myTI.ToTitleCase(Model.Forecast[0].Forecast)</p>
-            <p>High: @Model.Forecast[0].High</p>
-            <p>Low: @Model.Forecast[0].Low</p>
+            <p>High: @Model.Forecast[0].High °F</p>
+            <p>Low: @Model.Forecast[0].Low °F</p>
+            <p>@Model.Forecast[0].ForecastRecommendation</p>
+            @if (!Model.IsCelsius)
+            {
+                using (Html.BeginForm("Detail", "Park", new { parkCode = Model.Park.ParkCode }, FormMethod.Post))
+                {
+                    Html.HiddenFor(m => m.IsCelsius, true);
+                    <button>Switch to Celsius</button>
+                }
+            }
+            else
+            {
+                using (Html.BeginForm("Detail", "Park", new { parkCode = Model.Park.ParkCode }, FormMethod.Post))
+                {
+                    Html.HiddenFor(m => m.IsCelsius, false);
+                    <button>Switch to Fahrenheit</button>
+                }
+            }
+
         </div>
 
         @for (int i = 1; i < Model.Forecast.Count; i++)
         {
             <div class="col-lg-2 col-sm-6">
-                <h3>
+                <h4>
                     @(DateTime.Now.AddDays(i).DayOfWeek)
-                </h3>
+                </h4>
                 <img class="img-responsive" src="@Url.Content("~/Content/weather/" + Model.Forecast[i].ImageName + ".png")" />
                 <p>@myTI.ToTitleCase(Model.Forecast[i].Forecast)</p>
                 <p>High: @Model.Forecast[i].High</p>

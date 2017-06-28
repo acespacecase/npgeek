@@ -17,11 +17,69 @@ namespace Capstone.Web.Models
         {
             get
             {
-                if(this.Forecast == "partly cloudy")
+                if (this.Forecast == "partly cloudy")
                 {
                     return "partlyCloudy";
                 }
                 return this.Forecast;
+            }
+        }
+
+        public string ForecastRecommendation
+        {
+            get
+            {
+                string recommendation = "";
+
+                if (High > 75)
+                {
+                    recommendation += "It's a hot one! Bring an extra gallon of water. ";
+                }
+
+                if (High - Low > 20)
+                {
+                    recommendation += "You better wear breathable layers. ";
+                }
+
+                if (Low < 20)
+                {
+                    recommendation += "Be wary of low temperatures: It's dangerous to be exposed to frigid temperatures. ";
+                }
+
+                if (this.Forecast == "snow")
+                {
+                    recommendation += "Better bring some snowshoes! ";
+                }
+                else if (this.Forecast == "rain")
+                {
+                    recommendation += "Make sure to pack your rain gear and wear waterproof shoes. ";
+                }
+                else if (this.Forecast == "thunderstorms")
+                {
+                    recommendation += "Please seek shelter and avoid hiking on exposed ridges. ";
+                }
+                else if (this.Forecast == "sunny")
+                {
+                    recommendation += "Pack sunblock! ";
+                }
+
+                return recommendation.Trim();
+            }
+        }
+
+        public int HighC
+        {
+            get
+            {
+                return ((this.High - 32) * (5 / 9));
+            }
+        }
+
+        public int LowC
+        {
+            get
+            {
+                return ((this.Low - 32) * (5 / 9));
             }
         }
     }

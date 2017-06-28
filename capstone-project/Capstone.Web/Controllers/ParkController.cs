@@ -28,10 +28,12 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Detail(string parkCode)
         {
+
             ParkWeatherViewModel model = new ParkWeatherViewModel()
             {
                 Park = parkDal.GetPark(parkCode),
-                Forecast = weatherDal.GetFiveDayForecast(parkCode)
+                Forecast = weatherDal.GetFiveDayForecast(parkCode),
+                IsCelsius = CheckForTemperatureType()
             };
 
             if(model == null)
@@ -42,6 +44,25 @@ namespace Capstone.Web.Controllers
             {
                 return View("Detail", model);
             }
+        }
+
+        [HttpPost]
+        public ActionResult Detail(ParkWeatherViewModel model, string parkCode)
+        {
+            Session["IsCelsius"] = model.IsCelsius;
+            model.IsCelsius = !model.IsCelsius;
+
+            return RedirectToAction("Detail", new { parkCode = parkCode });
+
+        }
+
+        public bool CheckForTemperatureType()
+        {
+            if (Session["IsCelsius"] == null)
+            {
+                Session["IsCelsius"] = false;
+            }
+            return (bool)Session["IsCelsius"];
         }
     }
 }
