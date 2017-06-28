@@ -1,20 +1,22 @@
 ﻿@using Capstone.Web.Models;
-@model Park
+@using System.Globalization;
+@model ParkWeatherViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 }
 
 <div class="col-lg-8 col-lg-offset-2">
     <div class="row">
         <div class="col-lg-6">
-            <img class="img-responsive" src="@Url.Content("~/Content/parks/" + Model.ParkCode + ".jpg")" />
+            <img class="img-responsive" src="@Url.Content("~/Content/parks/" + Model.Park.ParkCode + ".jpg")" />
         </div>
         <div class="col-lg-6">
-            <h3 class="park-name">@Model.ParkName</h3>
-            <p class="park-location">@Model.State</p>
-            <p class="park-description">@Model.ParkDescription</p>
+            <h3 class="park-name">@Model.Park.ParkName</h3>
+            <p class="park-location">@Model.Park.State</p>
+            <p class="park-description">@Model.Park.ParkDescription</p>
         </div>
     </div>
     <div class="row">
@@ -25,15 +27,15 @@
                         Est.
                     </td>
                     <td>
-                        @Model.YearFounded
+                        @Model.Park.YearFounded
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Size: 
+                        Size:
                     </td>
                     <td>
-                        @Model.Acreage.ToString("N0") acres
+                        @Model.Park.Acreage.ToString("N0") acres
                     </td>
                 </tr>
                 <tr>
@@ -41,7 +43,7 @@
                         Elevation:
                     </td>
                     <td>
-                        @Model.ElevationInFeet.ToString("N0") feet
+                        @Model.Park.ElevationInFeet.ToString("N0") feet
                     </td>
                 </tr>
                 <tr>
@@ -49,7 +51,7 @@
                         Trail Length:
                     </td>
                     <td>
-                        @Model.MilesOfTrail.ToString("N0") miles
+                        @Model.Park.MilesOfTrail.ToString("N0") miles
                     </td>
                 </tr>
                 <tr>
@@ -57,7 +59,7 @@
                         Entry Fee:
                     </td>
                     <td>
-                        @Model.EntryFee.ToString("C2")
+                        @Model.Park.EntryFee.ToString("C2")
                     </td>
                 </tr>
                 <tr>
@@ -65,7 +67,7 @@
                         Number of Campsites:
                     </td>
                     <td>
-                        @Model.NumberOfCampsites.ToString("N0") 
+                        @Model.Park.NumberOfCampsites.ToString("N0")
                     </td>
                 </tr>
                 <tr>
@@ -73,7 +75,7 @@
                         Annual Visitors:
                     </td>
                     <td>
-                        @Model.AnnualVisitorCount.ToString("N0") guests
+                        @Model.Park.AnnualVisitorCount.ToString("N0") guests
                     </td>
                 </tr>
                 <tr>
@@ -81,7 +83,7 @@
                         Animal Species:
                     </td>
                     <td>
-                        @Model.NumberOfAnimalSpecies
+                        @Model.Park.NumberOfAnimalSpecies
                     </td>
                 </tr>
                 <tr>
@@ -89,14 +91,37 @@
                         Climate:
                     </td>
                     <td>
-                        @Model.Climate
+                        @Model.Park.Climate
                     </td>
                 </tr>
             </table>
         </div>
         <div class="col-lg-8">
-            <p class="quote">@Model.InspirationalQuote</p>
-            <p class="source">@Model.InspirationalQuoteSource</p>
+            <p class="quote">@Model.Park.InspirationalQuote</p>
+            <p class="source">@Model.Park.InspirationalQuoteSource</p>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4">
+            <h3>Today</h3>
+            <img class="img-responsive" src="@Url.Content("~/Content/weather/" + Model.Forecast[0].ImageName + ".png")" />
+            <p>@myTI.ToTitleCase(Model.Forecast[0].Forecast)</p>
+            <p>High: @Model.Forecast[0].High</p>
+            <p>Low: @Model.Forecast[0].Low</p>
+        </div>
+
+        @for (int i = 1; i < Model.Forecast.Count; i++)
+        {
+            <div class="col-lg-2 col-sm-6">
+                <h3>
+                    @(DateTime.Now.AddDays(i).DayOfWeek)
+                </h3>
+                <img class="img-responsive" src="@Url.Content("~/Content/weather/" + Model.Forecast[i].ImageName + ".png")" />
+                <p>@myTI.ToTitleCase(Model.Forecast[i].Forecast)</p>
+                <p>High: @Model.Forecast[i].High</p>
+                <p>Low: @Model.Forecast[i].Low</p>
+            </div>
+        }
     </div>
 </div>

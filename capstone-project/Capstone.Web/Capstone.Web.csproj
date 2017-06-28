@@ -139,10 +139,12 @@
     <Compile Include="DAL\ISurveyData.cs" />
     <Compile Include="DAL\IWeatherData.cs" />
     <Compile Include="DAL\ParkSqlDal.cs" />
+    <Compile Include="DAL\WeatherSqlDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Park.cs" />
+    <Compile Include="Models\ParkWeatherViewModel.cs" />
     <Compile Include="Models\Survey.cs" />
     <Compile Include="Models\Weather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

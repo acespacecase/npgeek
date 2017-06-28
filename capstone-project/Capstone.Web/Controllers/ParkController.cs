@@ -11,12 +11,13 @@ namespace Capstone.Web.Controllers
     public class ParkController : Controller
     {
         private IParkData parkDal;
+        private IWeatherData weatherDal;
 
-        public ParkController(IParkData parkDal)
+        public ParkController(IParkData parkDal, IWeatherData weatherDal)
         {
             this.parkDal = parkDal;
+            this.weatherDal = weatherDal;
         }
-
 
         // GET: Park
         public ActionResult Index()
@@ -27,7 +28,11 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Detail(string parkCode)
         {
-            Park model = parkDal.GetPark(parkCode);
+            ParkWeatherViewModel model = new ParkWeatherViewModel()
+            {
+                Park = parkDal.GetPark(parkCode),
+                Forecast = weatherDal.GetFiveDayForecast(parkCode)
+            };
 
             if(model == null)
             {

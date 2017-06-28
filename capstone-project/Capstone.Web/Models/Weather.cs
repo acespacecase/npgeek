@@ -12,5 +12,17 @@ namespace Capstone.Web.Models
         public int Low { get; set; }
         public int High { get; set; }
         public string Forecast { get; set; }
+
+        public string ImageName
+        {
+            get
+            {
+                if(this.Forecast == "partly cloudy")
+                {
+                    return "partlyCloudy";
+                }
+                return this.Forecast;
+            }
+        }
     }
 }
