@@ -44,7 +44,7 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    Park singlePark = conn.Query<Park>("SELECT * FROM park WHERE parkCode = @parkCode;", new { parkCode = parkCode }).First();
+                    Park singlePark = conn.QueryFirstOrDefault<Park>("SELECT * FROM park WHERE parkCode = @parkCode;", new { parkCode = parkCode });
                     return singlePark;
                 }
             }

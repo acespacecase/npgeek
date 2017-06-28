@@ -21,7 +21,22 @@ namespace Capstone.Web.Controllers
         // GET: Park
         public ActionResult Index()
         {
-            return View();
+            List<Park> model = parkDal.GetAllParks();
+            return View("Index", model);
+        }
+
+        public ActionResult Detail(string parkCode)
+        {
+            Park model = parkDal.GetPark(parkCode);
+
+            if(model == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View("Detail", model);
+            }
         }
     }
 }
