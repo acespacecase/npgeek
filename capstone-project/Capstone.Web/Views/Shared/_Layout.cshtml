@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/styles.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header>
+        <div class="row" id="logo-bar">
+            <div class="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
+                <img src="@Url.Content("~/Content/logo.png")" alt="NPGeek Logo" class="img-responsive" />
+            </div>
+            <div class="col-sm-9 col-xs-12">
+                <h1>NP Geek</h1>
+            </div>
+        </div>
+        <nav class="row">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active">
+                        <a href="@Url.Action("Index", "Park")">Home</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="@Url.Action("Index", "Survey")">Survey</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container-fluid">
+        @RenderBody()
+    </section>
+</body>
+</html>
