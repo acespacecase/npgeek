@@ -10,7 +10,6 @@ namespace Capstone.Web.DAL
     {
         List<Survey> GetAllSurveys();
         Survey GetSurvey(int id);
-        void EditSurvey(Survey s);
         void AddSurvey(Survey s);
     }
 }

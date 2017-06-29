@@ -1,0 +1,29 @@
+﻿@using Capstone.Web.Models;
+@model ParkSurveyViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a href="@Url.Action("Add", "Survey")">Submit a Survey</a>
+
+<h2>Most Popular Parks</h2>
+
+<div>
+    @foreach (Park park in Model.Parks)
+    {
+        if ((int)(Model.Surveys.Where(s => s.ParkCode == park.ParkCode).ToList().Count) > 0)
+        {
+            <div class="row">
+                <div class="col-lg-2">
+                    <img class="img-responsive" src="@Url.Content("~/Content/parks/" + park.ParkCode + ".jpg")" />
+                </div>
+                <div class="col-lg-10">
+                    <h3>@park.ParkName</h3>
+                    <p>@((int)(Model.Surveys.Where(s => s.ParkCode == park.ParkCode).ToList().Count))</p>
+                </div>
+            </div>
+        }
+    }
+</div>

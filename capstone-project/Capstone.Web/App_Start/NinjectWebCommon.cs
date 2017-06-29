@@ -65,7 +65,7 @@ namespace Capstone.Web.App_Start
         {
             kernel.Bind<IParkData>().To<ParkSqlDal>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["npgeek"].ConnectionString);
             kernel.Bind<IWeatherData>().To<WeatherSqlDal>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["npgeek"].ConnectionString);
-            //kernel.Bind<ISurveyData>().To<SurveySqlDal>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["npgeek"].ConnectionString);
-        }        
+            kernel.Bind<ISurveyData>().To<SurveySqlDal>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["npgeek"].ConnectionString);
+        }
     }
 }

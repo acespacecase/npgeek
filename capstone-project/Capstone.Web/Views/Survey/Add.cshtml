@@ -1,0 +1,36 @@
+﻿@using Capstone.Web.Models;
+@model Survey
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Add", "Survey", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ParkCode)
+        @Html.DropDownListFor(m => m.ParkCode, Model.AllParks, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.AllParks)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmailAddress)
+        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.EmailAddress)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.State)
+        @Html.DropDownListFor(m => m.State, Model.AllStates, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.State)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActivityLevel)
+        @for(int i = 0; i < Model.AllActivityLevels.Count; i++)
+        {
+            Html.RadioButtonFor(m => m.ActivityLevel, Model.AllActivityLevels[i]);
+        }
+        @Html.ValidationMessageFor(m => m.ActivityLevel)
+    </div>
+
+    <button class="btn btn-primary">Submit</button>
+}
