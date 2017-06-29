@@ -19,9 +19,30 @@ namespace Capstone.Web.Models
             {
                 if (this.Forecast == "partly cloudy")
                 {
-                    return "partlyCloudy";
+                    return "wi-day-cloudy";
                 }
-                return this.Forecast;
+                else if (Forecast == "sunny")
+                {
+                    return "wi-day-sunny";
+                }
+                else if (Forecast == "thunderstorms")
+                {
+                    return "wi-thunderstorm";
+                }
+                else if (Forecast == "snow")
+                {
+                    return "wi-snow";
+                }
+                else if (Forecast == "cloudy")
+                {
+                    return "wi-cloudy";
+                }
+                else if (Forecast == "rain")
+                {
+                    return "wi-rain";
+                }
+
+                return "wi-alien";
             }
         }
 

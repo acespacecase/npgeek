@@ -1,3 +1,191 @@
-﻿#logo-bar {
+﻿/* ELEMENT STYLES */
+
+body, html {
+    font-family: 'Lato', sans-serif;
+    background-color: #658B86;
+    font-size: 16px;
+    line-height: 150%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora', serif;
+}
+
+h1 {
+    font-weight: 700;
+    color: #D1F7EE;
+}
+
+/* BASIC BOOTSTRAP OVERRIDES */
+.btn-default {
+    background-color: #f9f9f9;
+}
+
+
+/* HEADER & NAV */
+header {
+    background-color: #416964;
+}
+
+#logo-bar {
     margin-bottom: 30px;
+    text-align: center;
+}
+
+.nav-pills > li {
+    display: inline-block;
+    float: none;
+}
+
+nav a {
+    color: #efefef;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #375854;
+    color: #efefef;
+}
+
+
+/* PARK INDEX VIEW */
+
+.park-tile, .detail-tile {
+    background-color: #efefef;
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid #b5b5b5;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.park-tile h3, .detail-tile h3 {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.park-tile a {
+    color: rgba(97, 117, 110, 1.0);
+}
+
+.park-tile a:hover {
+    text-decoration: none;
+    color: rgba(97, 117, 110, 0.5);
+}
+
+.park-location {
+    display: inline;
+    padding: 3px 5px;
+    background-color: #D1F7EE;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: 1px solid rgba(97, 117, 110, 0.5);
+    margin: 0;
+    border-radius: 5px;
+}
+
+.park-title-with-badge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 12px 0;
+}
+
+.park-img {
+    border: 1px solid #666458;
+}
+
+.park-img:hover {
+    opacity: 0.7;
+}
+
+.park-tile:first-child {
+    margin-top: 50px;
+}
+
+.park-tile:last-child {
+    margin-bottom: 50px;
+}
+
+/* DETAIL TILE PAGE */
+
+.detail-tile {
+    margin: 50px 0;
+}
+
+.detail-tile h4 {
+    margin: 50px 0 10px 0;
+    color: #416964;
+}
+
+.detail-centered {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    
+}
+
+.facts-container, quote-container {
+    flex: 1 auto;
+}
+
+.quote-container {
+    margin: 40px 0;
+    width: 50%;
+}
+
+.quote {
+    font-family: 'Dancing Script', sans-serif;
+    font-size: 35px;
+    text-align:center;
+    line-height: 150%;
+}
+
+.source {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #658b86;
+}
+
+.wi {
+    font-size: 40px;
+    display: block;
+    color: #658B86;
+    margin: 20px 0 20px 0;
+}
+
+.today-icon {
+    font-size: 95px;
+    margin: 20px 0 35px 0;
+}
+
+.detail-weather {
+    margin: 30px 0;
+}
+
+/* MOBILE SCREENS ONLY */
+@media (max-width: 480px) {
+    .park-tile {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 756px) {
+    .quote-container {
+        width: 100%;
+    }
+}
+
+
+/* FOOTER */
+footer {
+    background-color: #416964;
+}
+
+.footer-comments {
+    color: #D1F7EE;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
 }

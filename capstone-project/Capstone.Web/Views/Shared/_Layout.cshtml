@@ -4,35 +4,43 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Lora:400,700|Dancing+Script" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/weather-icons.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/styles.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <header class="container-fluid"> 
-        <div class="row" id="logo-bar">
-            <div class="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
-                <img src="@Url.Content("~/Content/logo.png")" alt="NPGeek Logo" class="img-responsive" />
-            </div>
-            <div class="col-sm-9 col-xs-12">
-                <h1>NP Geek</h1>
+    <header class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2" id="logo-bar">
+
+                <h1>National Park Geek</h1>
+
+                <nav>
+                    <ul class="nav nav-pills">
+                        <li><a href="@Url.Action("Index", "Park")">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Survey")">Survey</a></li>
+                    </ul>
+                </nav>
+
             </div>
         </div>
-        <nav class="row">
-            <div class="col-xs-12">
-                <ul class="nav nav-tabs">
-                    <li role="presentation" class="active">
-                        <a href="@Url.Action("Index", "Park")">Home</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="@Url.Action("Index", "Survey")">Survey</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
     </header>
 
     <div class="container-fluid">
-        @RenderBody()
+        <div class="col-lg-8 col-lg-offset-2">
+
+            @RenderBody()
+
+        </div>
     </div>
+
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <p class="footer-comments">Made with &#9829; by Stacy and Shannon &#169; 2017</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

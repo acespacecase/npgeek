@@ -25,9 +25,9 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ActivityLevel)
-        @for(int i = 0; i < Model.AllActivityLevels.Count; i++)
+        @for (int i = 0; i < Model.AllActivityLevels.Count; i++)
         {
-            Html.RadioButtonFor(m => m.ActivityLevel, Model.AllActivityLevels[i]);
+            <p>@Html.RadioButtonFor(m => m.ActivityLevel, Model.AllActivityLevels[i].Text) @Model.AllActivityLevels[i].Text</p>
         }
         @Html.ValidationMessageFor(m => m.ActivityLevel)
     </div>

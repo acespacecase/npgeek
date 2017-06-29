@@ -9,158 +9,165 @@
     TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 }
 
-<div class="col-lg-8 col-lg-offset-2">
+<div class="detail-tile">
     <div class="row">
         <div class="col-lg-6">
             <img class="img-responsive" src="@Url.Content("~/Content/parks/" + Model.Park.ParkCode + ".jpg")" />
         </div>
         <div class="col-lg-6">
-            <h3 class="park-name">@Model.Park.ParkName</h3>
-            <p class="park-location">@Model.Park.State</p>
+            <div class="park-title-with-badge">
+                <h3 class="park-name">@Model.Park.ParkName</h3>
+                <p class="park-location">@Model.Park.State</p>
+            </div>
             <p class="park-description">@Model.Park.ParkDescription</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4">
-            <table class="table">
-                <tr>
-                    <td>
-                        Est.
-                    </td>
-                    <td>
-                        @Model.Park.YearFounded
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Size:
-                    </td>
-                    <td>
-                        @Model.Park.Acreage.ToString("N0") acres
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Elevation:
-                    </td>
-                    <td>
-                        @Model.Park.ElevationInFeet.ToString("N0") feet
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Trail Length:
-                    </td>
-                    <td>
-                        @Model.Park.MilesOfTrail.ToString("N0") miles
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Entry Fee:
-                    </td>
-                    <td>
-                        @Model.Park.EntryFee.ToString("C2")
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Number of Campsites:
-                    </td>
-                    <td>
-                        @Model.Park.NumberOfCampsites.ToString("N0")
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Annual Visitors:
-                    </td>
-                    <td>
-                        @Model.Park.AnnualVisitorCount.ToString("N0") guests
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Animal Species:
-                    </td>
-                    <td>
-                        @Model.Park.NumberOfAnimalSpecies
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Climate:
-                    </td>
-                    <td>
-                        @Model.Park.Climate
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="col-lg-8">
-            <p class="quote">"@Model.Park.InspirationalQuote"</p>
-            <p class="source">—@Model.Park.InspirationalQuoteSource</p>
+        <div class="col-lg-12 detail-centered">
+            <div class="facts-container">
+                <h4>Fast Facts</h4>
+                <table class="table">
+                    <tr>
+                        <td>
+                            Est.
+                        </td>
+                        <td>
+                            @Model.Park.YearFounded
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Size:
+                        </td>
+                        <td>
+                            @Model.Park.Acreage.ToString("N0") acres
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Elevation:
+                        </td>
+                        <td>
+                            @Model.Park.ElevationInFeet.ToString("N0") feet
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Trail Length:
+                        </td>
+                        <td>
+                            @Model.Park.MilesOfTrail.ToString("N0") miles
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Entry Fee:
+                        </td>
+                        <td>
+                            @Model.Park.EntryFee.ToString("C2")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Number of Campsites:
+                        </td>
+                        <td>
+                            @Model.Park.NumberOfCampsites.ToString("N0")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Annual Visitors:
+                        </td>
+                        <td>
+                            @Model.Park.AnnualVisitorCount.ToString("N0") guests
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Animal Species:
+                        </td>
+                        <td>
+                            @Model.Park.NumberOfAnimalSpecies
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Climate:
+                        </td>
+                        <td>
+                            @Model.Park.Climate
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="quote-container">
+                <p class="quote">"@Model.Park.InspirationalQuote"</p>
+                <p class="source">—@Model.Park.InspirationalQuoteSource</p>
+            </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-lg-4">
-            <h3>Today</h3>
-            <img class="img-responsive" src="@Url.Content("~/Content/weather/" + Model.Forecast[0].ImageName + ".png")" />
-            <p>@myTI.ToTitleCase(Model.Forecast[0].Forecast)</p>
-
-            @if (!(bool)Session["IsCelsius"])
-            {
-                <p>High: @Model.Forecast[0].High °F</p>
-                    <p>Low: @Model.Forecast[0].Low °F</p>
-            }
-            else
-            {
-                <p>High: @Model.Forecast[0].HighC °C</p>
-                    <p>Low: @Model.Forecast[0].LowC °C</p>
-            }
-
-            <p>@Model.Forecast[0].ForecastRecommendation</p>
-            @if (!(bool)Session["IsCelsius"])
-            {
-                using (Html.BeginForm("Detail", "Park", new { parkCode = Model.Park.ParkCode }, FormMethod.Post))
-                {
-                    Html.HiddenFor(m => m.IsCelsius, true);
-                    <button>Switch to Celsius</button>
-                }
-            }
-            else
-            {
-                using (Html.BeginForm("Detail", "Park", new { parkCode = Model.Park.ParkCode }, FormMethod.Post))
-                {
-                    Html.HiddenFor(m => m.IsCelsius, true);
-                    <button>Switch to Fahrenheit</button>
-                }
-            }
-
-        </div>
-
-        @for (int i = 1; i < Model.Forecast.Count; i++)
-        {
-            <div class="col-lg-2 col-sm-6">
-                <h4>
-                    @(DateTime.Now.AddDays(i).DayOfWeek)
-                </h4>
-                <img class="img-responsive" src="@Url.Content("~/Content/weather/" + Model.Forecast[i].ImageName + ".png")" />
-                <p>@myTI.ToTitleCase(Model.Forecast[i].Forecast)</p>
+        <div class="detail-weather">
+            <div class="col-lg-4">
+                <h3>Today</h3>
+                <i class="wi @Model.Forecast[0].ImageName today-icon"></i>
+                <p><strong>@myTI.ToTitleCase(Model.Forecast[0].Forecast)</strong></p>
 
                 @if (!(bool)Session["IsCelsius"])
-                {
-                    <p>High: @Model.Forecast[i].High °F</p>
-                    <p>Low: @Model.Forecast[i].Low °F</p>
+            {
+                    <p>High: <strong>@Model.Forecast[0].High °F</strong></p>
+                    <p>Low: <strong>@Model.Forecast[0].Low °F </strong></p>
                 }
                 else
                 {
-                    <p>High: @Model.Forecast[i].HighC °C</p>
-                    <p>Low: @Model.Forecast[i].LowC °C</p>
+                    <p>High: <strong>@Model.Forecast[0].HighC °C</strong></p>
+                    <p>Low: <strong>@Model.Forecast[0].LowC °C</strong></p>
+                }
+
+                <p><em>@Model.Forecast[0].ForecastRecommendation</em></p>
+                @if (!(bool)Session["IsCelsius"])
+            {
+                using (Html.BeginForm("Detail", "Park", new { parkCode = Model.Park.ParkCode }, FormMethod.Post))
+                {
+                    Html.HiddenFor(m => m.IsCelsius, true);
+                        <button class="btn btn-default">Switch to Celsius</button>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("Detail", "Park", new { parkCode = Model.Park.ParkCode }, FormMethod.Post))
+                    {
+                        Html.HiddenFor(m => m.IsCelsius, true);
+                        <button class="btn btn-default">Switch to Fahrenheit</button>
+                    }
                 }
 
             </div>
-        }
+
+            @for (int i = 1; i < Model.Forecast.Count; i++)
+            {
+                <div class="col-lg-2 col-sm-3 col-xs-6">
+                    <h4>
+                        @(DateTime.Now.AddDays(i).DayOfWeek)
+                    </h4>
+                    <i class="wi @Model.Forecast[i].ImageName"></i>
+                    <p><strong>@myTI.ToTitleCase(Model.Forecast[i].Forecast)</strong></p>
+
+                    @if (!(bool)Session["IsCelsius"])
+                {
+                        <p>High: <strong>@Model.Forecast[i].High °F</strong></p>
+                        <p>Low: <strong>@Model.Forecast[i].Low °F</strong></p>
+                    }
+                    else
+                    {
+                        <p>High: <strong>@Model.Forecast[i].HighC °C</strong></p>
+                        <p>Low: <strong>@Model.Forecast[i].LowC °C</strong></p>
+                    }
+
+                </div>
+            }
+        </div>
     </div>
 </div>
