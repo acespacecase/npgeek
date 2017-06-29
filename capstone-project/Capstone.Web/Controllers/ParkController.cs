@@ -49,8 +49,7 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult Detail(ParkWeatherViewModel model, string parkCode)
         {
-            Session["IsCelsius"] = model.IsCelsius;
-            model.IsCelsius = !model.IsCelsius;
+            Session["IsCelsius"] = !CheckForTemperatureType();
 
             return RedirectToAction("Detail", new { parkCode = parkCode });
 

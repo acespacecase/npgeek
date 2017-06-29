@@ -71,7 +71,7 @@ namespace Capstone.Web.Models
         {
             get
             {
-                return ((this.High - 32) * (5 / 9));
+                return (int)(Math.Round(((this.High - 32.00) * (5.00 / 9.00))));
             }
         }
 
@@ -79,7 +79,7 @@ namespace Capstone.Web.Models
         {
             get
             {
-                return ((this.Low - 32) * (5 / 9));
+                return (int)(Math.Round(((this.Low - 32.00) * (5.00 / 9.00))));
             }
         }
     }
