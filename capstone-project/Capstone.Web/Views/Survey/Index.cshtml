@@ -6,24 +6,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<a href="@Url.Action("Add", "Survey")">Submit a Survey</a>
+<div class="survey-says">
 
-<h2>Most Popular Parks</h2>
+    <div class="survey-title-with-badge">
+        <h2 id="survey-title">Most Popular Parks</h2>
+        <a href="@Url.Action("Add", "Survey")"><span class="submit-survey-badge">Submit a Survey</span></a>
+    </div>
 
-<div>
-    @foreach (Park park in Model.Parks)
-    {
-        if ((int)(Model.Surveys.Where(s => s.ParkCode == park.ParkCode).ToList().Count) > 0)
+    <div>
+        @foreach (Park park in Model.Parks)
         {
-            <div class="row">
-                <div class="col-lg-2">
-                    <img class="img-responsive" src="@Url.Content("~/Content/parks/" + park.ParkCode + ".jpg")" />
+            if ((int)(Model.Surveys.Where(s => s.ParkCode == park.ParkCode).ToList().Count) > 0)
+            {
+                <div class="row survey-tile">
+                    <div class="col-lg-4 col-sm-6">
+                        <img class="img-responsive" src="@Url.Content("~/Content/parks/" + park.ParkCode + ".jpg")" />
+                    </div>
+                    <div class="col-lg-8 col-sm-6 survey-park-info">
+                        <h3 class="park-name survey-park-name"><a href="@Url.Action("Detail", "Park", new { parkCode = park.ParkCode })">@park.ParkName</a></h3>
+                        <p class="survey-votes">Votes: @((int)(Model.Surveys.Where(s => s.ParkCode == park.ParkCode).ToList().Count))</p>
+                    </div>
                 </div>
-                <div class="col-lg-10">
-                    <h3>@park.ParkName</h3>
-                    <p>@((int)(Model.Surveys.Where(s => s.ParkCode == park.ParkCode).ToList().Count))</p>
-                </div>
-            </div>
+            }
         }
-    }
+    </div>
 </div>

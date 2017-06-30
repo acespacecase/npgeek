@@ -49,7 +49,7 @@ nav a {
 
 /* PARK INDEX VIEW */
 
-.park-tile, .detail-tile {
+.park-tile, .detail-tile, .survey-says {
     background-color: #efefef;
     padding: 30px;
     margin: 20px 0;
@@ -64,16 +64,16 @@ nav a {
     margin-right: 20px;
 }
 
-.park-tile a {
+.park-tile a, .park-name a {
     color: rgba(97, 117, 110, 1.0);
 }
 
-.park-tile a:hover {
+.park-tile a:hover, .park-name a:hover {
     text-decoration: none;
     color: rgba(97, 117, 110, 0.5);
 }
 
-.park-location {
+.park-location, .submit-survey-badge {
     display: inline;
     padding: 3px 5px;
     background-color: #D1F7EE;
@@ -84,7 +84,7 @@ nav a {
     border-radius: 5px;
 }
 
-.park-title-with-badge {
+.park-title-with-badge, .survey-title-with-badge {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -163,6 +163,94 @@ nav a {
 .detail-weather {
     margin: 30px 0;
 }
+
+
+/* SURVEY RESULTS PAGE ONLY */
+.survey-says {
+    margin: 50px 0;
+}
+
+#survey-title {
+    margin: 0 20px 0 0;
+    padding: 0;
+}
+
+.survey-title-with-badge {
+    margin: 0 0 30px 0;
+}
+
+.submit-survey-badge {
+    padding: 7px 10px;
+}
+
+.survey-title-with-badge a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.submit-survey-badge:hover {
+    text-decoration: none;
+    background-color: rgba(209, 247, 238, 0.40);
+}
+
+.survey-tile {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1pt solid #d0d0d0;
+}
+
+.survey-tile:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.survey-votes {
+    font-weight: 700;
+}
+
+.survey-tile:first-child .survey-park-info .survey-park-name::before,
+.survey-tile:nth-child(2) .survey-park-info .survey-park-name::before,
+.survey-tile:nth-child(3) .survey-park-info .survey-park-name::before {
+    content: "\f091";
+    font-family: 'FontAwesome';
+    font-size: 175%;
+    color: #658B86;
+    margin-right: 12px;
+}
+
+.survey-tile:first-child a,
+.survey-tile:nth-child(2) a,
+.survey-tile:nth-child(3) a {
+    position: relative;
+}
+
+.survey-tile:first-child .survey-park-info a::before,
+.survey-tile:nth-child(2) .survey-park-info a::before,
+.survey-tile:nth-child(3) .survey-park-info a::before {
+    color: #fff;
+    font-family: 'Lato';
+    font-size: 14px;
+    font-weight: 700;
+    position: absolute;
+    left: -36px;
+    top: -6px;
+}
+
+.survey-tile:nth-child(1) .survey-park-info a::before {
+    content: "1";
+}
+
+.survey-tile:nth-child(2) .survey-park-info a::before {
+    content: "2";
+}
+
+.survey-tile:nth-child(3) .survey-park-info a::before {
+    content: "3";
+}
+
+
+
 
 /* MOBILE SCREENS ONLY */
 @media (max-width: 480px) {
