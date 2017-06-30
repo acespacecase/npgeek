@@ -6,31 +6,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm("Add", "Survey", FormMethod.Post))
-{
-    <div class="form-group">
-        @Html.LabelFor(m => m.ParkCode)
-        @Html.DropDownListFor(m => m.ParkCode, Model.AllParks, new { @class = "form-control"})
-        @Html.ValidationMessageFor(m => m.AllParks)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.EmailAddress)
-        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.EmailAddress)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.State)
-        @Html.DropDownListFor(m => m.State, Model.AllStates, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.State)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ActivityLevel)
-        @for (int i = 0; i < Model.AllActivityLevels.Count; i++)
-        {
-            <p>@Html.RadioButtonFor(m => m.ActivityLevel, Model.AllActivityLevels[i].Text) @Model.AllActivityLevels[i].Text</p>
-        }
-        @Html.ValidationMessageFor(m => m.ActivityLevel)
-    </div>
+<div class="survey-says">
+    <h2>Submit a New Survey</h2>
+    @using (Html.BeginForm("Add", "Survey", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.ParkCode)
+            @Html.DropDownListFor(m => m.ParkCode, Model.AllParks, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AllParks)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.EmailAddress)
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.EmailAddress)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.State)
+            @Html.DropDownListFor(m => m.State, Model.AllStates, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.State)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ActivityLevel)
+            @for (int i = 0; i < Model.AllActivityLevels.Count; i++)
+            {
+                <p>@Html.RadioButtonFor(m => m.ActivityLevel, Model.AllActivityLevels[i].Text) @Model.AllActivityLevels[i].Text</p>
+            }
+            @Html.ValidationMessageFor(m => m.ActivityLevel)
+        </div>
 
-    <button class="btn btn-primary">Submit</button>
-}
+        <button class="btn btn-submit">Submit</button>
+    }
+</div>

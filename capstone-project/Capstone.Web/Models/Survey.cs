@@ -12,9 +12,11 @@ namespace Capstone.Web.Models
         public int SurveyId { get; set; }
 
         [Required(ErrorMessage = "*")]
+        [Display(Name = "Park")]
         public string ParkCode { get; set; }
 
         [Required(ErrorMessage = "*")]
+        [Display(Name = "Email Address")]
         [EmailAddress(ErrorMessage = "Please enter a valid email address")]
         public string EmailAddress { get; set; }
 
@@ -22,6 +24,7 @@ namespace Capstone.Web.Models
         public string State { get; set; }
 
         [Required(ErrorMessage = "*")]
+        [Display(Name = "Activity Level")]
         public string ActivityLevel { get; set; }
 
         public List<SelectListItem> AllParks { get; set; }
