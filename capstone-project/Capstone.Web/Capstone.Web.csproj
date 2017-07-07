@@ -108,11 +108,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\backpack.png" />
+    <Content Include="Content\backpack2.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\weather-icons-wind.css" />
+    <Content Include="Content\css\weather-icons-wind.min.css" />
+    <Content Include="Content\css\weather-icons.css" />
+    <Content Include="Content\css\weather-icons.min.css" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\font\weathericons-regular-webfont.svg" />
+    <Content Include="Content\geek.png" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\parks\cvnp.jpg" />
+    <Content Include="Content\parks\enp.jpg" />
+    <Content Include="Content\parks\gcnp.jpg" />
+    <Content Include="Content\parks\gnp.jpg" />
+    <Content Include="Content\parks\gsmnp.jpg" />
+    <Content Include="Content\parks\gtnp.jpg" />
+    <Content Include="Content\parks\mrnp.jpg" />
+    <Content Include="Content\parks\rmnp.jpg" />
+    <Content Include="Content\parks\ynp.jpg" />
+    <Content Include="Content\parks\ynp2.jpg" />
+    <Content Include="Content\scenery.png" />
     <Content Include="Content\styles.css" />
+    <Content Include="Content\weather\cloudy.png" />
+    <Content Include="Content\weather\partlyCloudy.png" />
+    <Content Include="Content\weather\rain.png" />
+    <Content Include="Content\weather\snow.png" />
+    <Content Include="Content\weather\sunny.png" />
+    <Content Include="Content\weather\thunderstorms.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -123,6 +152,15 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\fontawesome-webfont.woff2" />
+    <Content Include="Content\font\FontAwesome.otf" />
+    <Content Include="Content\font\weathericons-regular-webfont.eot" />
+    <Content Include="Content\font\weathericons-regular-webfont.ttf" />
+    <Content Include="Content\font\weathericons-regular-webfont.woff" />
+    <Content Include="Content\font\weathericons-regular-webfont.woff2" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
