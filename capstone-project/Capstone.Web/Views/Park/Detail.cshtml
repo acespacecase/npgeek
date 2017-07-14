@@ -4,7 +4,7 @@
 @model ParkWeatherViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Model.Park.ParkName;
     Layout = "~/Views/Shared/_Layout.cshtml";
     TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 }
