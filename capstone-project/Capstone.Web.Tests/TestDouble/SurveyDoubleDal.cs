@@ -15,18 +15,11 @@ namespace Capstone.Web.Tests.TestDouble
             return;
         }
 
-        public List<Survey> GetAllSurveys()
+        public Dictionary<string, int> GetAllSurveys()
         {
-            return new List<Survey>()
+            return new Dictionary<string, int>()
             {
-                new Survey()
-                {
-                    SurveyId = 1,
-                    ParkCode = "CVNP",
-                    EmailAddress = "email@email.com",
-                    State = "Ohio",
-                    ActivityLevel = "Active"
-                }
+                { "CVNP", 2 }
             };
         }
 
@@ -41,5 +34,6 @@ namespace Capstone.Web.Tests.TestDouble
                 ActivityLevel = "Active"
             };
         }
+        
     }
 }
