@@ -14,20 +14,17 @@
     </div>
 
     <div>
-        @foreach (Park park in Model.Parks)
+        @foreach (KeyValuePair<string, int> kvp in Model.SurveysGroupedByPark)
         {
-            if ((int)(Model.Surveys.Where(s => s.ParkCode == park.ParkCode).ToList().Count) > 0)
-            {
                 <div class="row survey-tile">
                     <div class="col-lg-4 col-sm-6">
-                        <img class="img-responsive" src="@Url.Content("~/Content/parks/" + park.ParkCode + ".jpg")" />
+                        <img class="img-responsive" src="@Url.Content("~/Content/parks/" + kvp.Key + ".jpg")" />
                     </div>
                     <div class="col-lg-8 col-sm-6 survey-park-info">
-                        <h3 class="park-name survey-park-name"><a href="@Url.Action("Detail", "Park", new { parkCode = park.ParkCode })">@park.ParkName</a></h3>
-                        <p class="survey-votes">Votes: @((int)(Model.Surveys.Where(s => s.ParkCode == park.ParkCode).ToList().Count))</p>
+                        <h3 class="park-name survey-park-name"><a href="@Url.Action("Detail", "Park", new { parkCode = kvp.Key })">@(Model.Parks.Where(p => p.ParkCode == kvp.Key).First().ParkName)</a></h3>
+                        <p class="survey-votes">Votes: @kvp.Value</p>
                     </div>
                 </div>
-            }
         }
     </div>
 </div>

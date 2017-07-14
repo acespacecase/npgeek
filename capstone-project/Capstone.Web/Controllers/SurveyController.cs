@@ -25,7 +25,8 @@ namespace Capstone.Web.Controllers
             ParkSurveyViewModel model = new ParkSurveyViewModel()
             {
                 Parks = parkDal.GetAllParks(),
-                Surveys = surveyDal.GetAllSurveys()
+                //Surveys = surveyDal.GetAllSurveys(),
+                SurveysGroupedByPark = surveyDal.GetAllSurveys()
             };
 
             return View("Index", model);

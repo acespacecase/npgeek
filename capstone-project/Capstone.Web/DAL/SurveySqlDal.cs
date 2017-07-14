@@ -10,7 +10,8 @@ namespace Capstone.Web.DAL
 {
     public class SurveySqlDal : ISurveyData
     {
-        private const string SQL_GetAllSurveys = "SELECT survey_result.* FROM survey_result LEFT JOIN park ON survey_result.parkCode = park.parkCode ORDER BY park.parkName;";
+        //private const string SQL_GetAllSurveys = "SELECT survey_result.* FROM survey_result LEFT JOIN park ON survey_result.parkCode = park.parkCode ORDER BY park.parkName;";
+        private const string SQL_GetAllSurveys = "SELECT survey_result.parkCode, Count(*) as surveyCount FROM survey_result GROUP BY parkCode ORDER BY surveyCount desc, parkCode asc;";
         private const string SQL_GetSurvey = "SELECT * FROM survey_result WHERE surveyId = @id;";
         private const string SQL_AddSurvey = "INSERT INTO survey_result VALUES(@parkCode, @emailAddress, @state, @activityLevel);";
         readonly string connectionString;
@@ -37,7 +38,7 @@ namespace Capstone.Web.DAL
             }
         }
 
-        public List<Survey> GetAllSurveys()
+        public Dictionary<string, int> GetAllSurveys()
         {
             try
             {
@@ -45,8 +46,20 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    List<Survey> allSurveys = conn.Query<Survey>(SQL_GetAllSurveys).ToList();
-                    return allSurveys;
+                    Dictionary<string, int> SurveysGroupedByPark = new Dictionary<string, int>();
+
+                    SqlCommand cmd = new SqlCommand(SQL_GetAllSurveys, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        SurveysGroupedByPark.Add(reader["parkCode"].ToString(), (int)reader["surveyCount"]);
+                    }
+
+                    return SurveysGroupedByPark;
+
+                    //List<Survey> allSurveys = conn.Query<Survey>(SQL_GetAllSurveys).ToList();
+                    //return allSurveys;
                 }
             }
             catch(SqlException ex)
